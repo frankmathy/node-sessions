@@ -33,9 +33,10 @@ var session;
 app.get('/',(req,res) => {
     session=req.session;
     if(session.userid){
-        res.send("Welcome User <a href=\'/logout'>click to logout</a>");
-    }else
-    res.sendFile('views/index.html',{root:__dirname})
+        res.send(`Welcome User ${session.userid} - <a href=\'/logout'>click to logout</a>`);
+    } else {
+        res.sendFile('views/index.html',{root:__dirname})
+    }
 });
 
 app.post('/user',(req,res) => {
